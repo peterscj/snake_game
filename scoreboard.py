@@ -1,9 +1,9 @@
 from turtle import Turtle
 
-STYLE = ('Arial', 30, 'bold')
+STYLE = ('Courier', 22, 'bold')
 ALIGN = "center"
 X_COR = 0
-Y_COR = 200
+Y_COR = 270
 SCORE = 0
 
 class Scoreboard(Turtle):
@@ -25,4 +25,8 @@ class Scoreboard(Turtle):
         self.text += str(self.score)
         self.clear()
         self.increase_score()
+
+    def game_over(self):
+        self.goto(0,15)
+        self.write("GAME OVER",align=ALIGN,font=STYLE)
 
