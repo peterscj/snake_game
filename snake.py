@@ -34,6 +34,15 @@ class Snake:
             self.segments[i].setposition(new_start, 0)
             new_start = self.segments[i].xcor() - 20
 
+    def add_segment(self,position):
+        segment = Turtle(shape="square")
+        segment.color("white")
+        segment.penup()
+        segment.goto(position)
+        self.segments.append(segment)
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
