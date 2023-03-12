@@ -1,6 +1,17 @@
 ## Snake Game
 
-## TODO: Bug when score goes over 10
+"""
+Welcome to the snake game! When started, the player controls a "snake"
+and the objective is to eat as much "food" as you can WITHOUT hitting the
+walls or any part of the body of the snake. As you successfully consume food,
+the snake's body will lengthen, thereby increasing the difficulty of not
+hitting the body.
+
+The main file stores game text, with the snake body, food pieces, and
+score tracking maintained as classes in separate files. Visuals used from
+the Turtle library.
+
+"""
 
 from turtle import Screen, Turtle
 import time
@@ -13,7 +24,6 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(5)
-
 
 # Initalize class instances
 snake = Snake()
@@ -57,6 +67,5 @@ while game_is_on:
         if snake.head.distance(i) < 15:
             game_is_on = False
             scoreboard.game_over()
-    # if snake.head.distance()
 
 screen.exitonclick()
