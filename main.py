@@ -1,5 +1,7 @@
 ## Snake Game
 
+## TODO: Bug when score goes over 10
+
 from turtle import Screen, Turtle
 import time
 from snake import Snake
@@ -38,11 +40,23 @@ while game_is_on:
         snake.segments[seg_num].goto(new_x, new_y)
     snake.head.forward(20)
 
-    # Create new food if there is a collision between
-    # snake and food. Then update scoreboard
+    # Update score, snake length, and new food piece after each time the snake eats something
     if snake.head.distance(food) < 15:
         food.refresh()
+        snake.extend()
         scoreboard.update_score()
 
+    # Detect collisions with wall
+    if abs(snake.head.xcor()) > 280 or abs(snake.head.ycor()) > 280:
+        game_is_on = False
+        scoreboard.game_over()
+
+    # Detect if snake collides with tail, slicing excludes the head
+    # from triggering automatic game over
+    for i in snake.segments[1:]:
+        if snake.head.distance(i) < 15:
+            game_is_on = False
+            scoreboard.game_over()
+    # if snake.head.distance()
 
 screen.exitonclick()
