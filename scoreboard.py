@@ -7,6 +7,10 @@ Y_COR = 270
 SCORE = 0
 
 class Scoreboard(Turtle):
+    """
+    New class to generate visual scoreboard and keep track of consumption.
+    Inherits all properties of the tuurtle class
+    """
     def __init__(self):
         super().__init__()
         self.color("white")
@@ -14,19 +18,24 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(X_COR,Y_COR)
         self.score = SCORE
-        self.text = f"Scoreboard: {self.score}"
         self.increase_score()
 
     def increase_score(self):
-        self.write(self.text,align=ALIGN,font=STYLE)
+        """
+        Generates scoreboard output
+        """
+        self.write(f"Scoreboard: {self.score}",align=ALIGN,font=STYLE)
     def update_score(self):
+        """
+        Add 1 to score and clear text in scoreboard title
+        """
         self.score +=1
-        self.text = self.text.rstrip(self.text[-1])
-        self.text += str(self.score)
         self.clear()
         self.increase_score()
 
     def game_over(self):
+        """
+        Displays game over text if losing condition met
+        """
         self.goto(0,15)
         self.write("GAME OVER",align=ALIGN,font=STYLE)
-
